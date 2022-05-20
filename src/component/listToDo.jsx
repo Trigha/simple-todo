@@ -22,7 +22,7 @@ function listToDo({ data, onDelete, onCheck }) {
                 size={14}
               />
               <h6 className="text-indigo-600 hover:text-indigo-400 inline transition duration-300 ease-in-out text-base md:text-lg font-medium mx-5">
-                {item.title}
+                {item.todo}
               </h6>
               <p className="text-sm text-gray-500 font-light italic mx-5">
                 No description
