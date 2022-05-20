@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavAdd from '../component/navAdd.jsx';
+import { db } from '../config/firebase_config';
 
 function NewItem() {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    db.collection('todos').add({
+      description: description,
+      inprogress: false,
+      todo: title,
+    });
+  }
+
   return (
     <>
       <NavAdd />
@@ -12,18 +26,26 @@ function NewItem() {
           spellcheck="false"
           placeholder="e.g Buy Milk"
           type="text"
+          autoComplete="off"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <h1>Description</h1>
         <textarea
           class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none focus:border-gray-500 focus:bg-white"
           spellcheck="false"
           placeholder="e.g Buy milk for the family"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         ></textarea>
 
         <div class="buttons flex justify-end pt-10">
-          <div class="btn border border-blue-500  p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-blue-500 hover:bg-blue-700">
+          <button
+            class="btn border border-blue-500  p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-blue-500 hover:bg-blue-700"
+            onClick={handleSubmit}
+          >
             Submit
-          </div>
+          </button>
         </div>
       </div>
     </>
