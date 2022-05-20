@@ -1,17 +1,18 @@
 import './App.css';
-// import NavHome from './component/navHome';
-import ListToDo from './component/listToDo';
-import NavAdd from './component/navAdd';
-import AddNew from './component/addNew';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/index'
+// import NavAdd from './pages/navAdd';
+import AddNew from './pages/addNew';
 
 function App() {
   return (
-    <div className="App">
-      {/* <NavHome /> */}
-      <NavAdd />
-      {/* <ListToDo /> */}
-      <AddNew />
-    </div>
+    <Router>
+      <Home />
+      <Routes>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/add" component={AddNew} />
+      </Routes>
+    </Router>   
   );
 }
 
