@@ -8,6 +8,9 @@ module.exports = {
          blossom: '#EEBECE',
          mainBlue: '#0B24FB',
         },
+        container: {
+          center: true,
+        },
         layout:{
           'blueTop': {left:-377, top: 0, width: '100%', height: '100%'},
         },
@@ -17,6 +20,7 @@ module.exports = {
         screens: {
           'laptop': '1920px',
         },
+        
       },
     },
     plugins: [],
