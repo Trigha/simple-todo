@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import NavAdd from '../component/navAdd.jsx';
 import { db } from '../config/firebase_config';
+import { useNavigate } from 'react-router-dom';
 
 function NewItem() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const history = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,6 +16,8 @@ function NewItem() {
       inprogress: false,
       todo: title,
     });
+
+    history('/');
   }
 
   return (

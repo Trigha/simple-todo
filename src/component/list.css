@@ -1,0 +1,3 @@
+#strike:checked + h6{
+    text-decoration: line-through;
+}
