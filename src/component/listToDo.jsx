@@ -17,11 +17,11 @@ function ListToDo({ data, id, todo, description, inprogress }) {
   }
 
   return (
-    <div className="max-w-xl pt-8 pb-12 mx-auto">
+    <div className="max-w-xl pt-8  mx-auto">
       <ul className="pt-5 mx-2">
         {/* {data.map((item) => ( */}
         <li
-          className="flex flex-row items-start justify-between py-2.5 shadow-lg mb-5"
+          className="flex flex-row items-start justify-between py-2.5 shadow-lg"
           key={id}
         >
           <div className="flex flex-col items-start justify-start gap-x-5">
@@ -35,7 +35,7 @@ function ListToDo({ data, id, todo, description, inprogress }) {
               {todo}
             </h6>
             <p className="text-sm text-gray-500 font-light italic mx-5">
-              {description}
+              {inprogress ? 'Completed' : 'In Progress'}
             </p>
           </div>
           <div className="flex flex-row items-center gap-x-4 mx-5">

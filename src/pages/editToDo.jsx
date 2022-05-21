@@ -1,22 +1,30 @@
 import React, { useState } from 'react';
 import NavEdit from '../component/navEdit.jsx';
+import { db } from '../config/firebase_config';
+import { useNavigate } from 'react-router-dom';
 
 function EditItem() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [data, setData] = useState([]);
+  const history = useNavigate();
 
-  const handleSubmit = (e) => {
+  function handleUpdate(e) {
     e.preventDefault();
-    setData([...data, { title, description }]);
-    setTitle('');
-    setDescription('');
-  };
+
+    db.collection('todos').update({
+      description: description,
+      inprogress: false,
+      todo: title,
+    });
+
+    history('/');
+  }
 
   return (
     <>
       <NavEdit />
-      <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl mt-10">
+      <div className="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl mt-10">
         <h1>Name</h1>
         <input
           class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none focus:border-gray-500 focus:bg-white"
@@ -29,19 +37,19 @@ function EditItem() {
         />
         <h1>Description</h1>
         <textarea
-          class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none focus:border-gray-500 focus:bg-white"
+          className="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none focus:border-gray-500 focus:bg-white"
           spellcheck="false"
           placeholder="e.g Buy milk for the family"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
 
-        <div class="buttons flex justify-end pt-10">
+        <div className="buttons flex justify-end pt-10">
           <div
-            class="btn border border-blue-500  p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-orange-500 hover:bg-orange-700"
-            onSubmit={handleSubmit}
+            className="btn border border-blue-500  p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-orange-500 hover:bg-orange-700"
+            onSubmit={handleUpdate}
           >
-            Submit
+            Edit
           </div>
         </div>
       </div>

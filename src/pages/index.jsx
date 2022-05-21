@@ -27,16 +27,19 @@ function HomePage() {
   return (
     <div>
       <NavHome />
-      {data.map((item) => (
-        <ListToDo
-          key={item.id}
-          id={item.id}
-          todo={item.todo}
-          description={item.description}
-          inprogress={item.inprogress}
-        />
-      ))}
-      {/* {data ? <ListToDo data={data} id={data.id} /> : <Loading />} */}
+      {data ? (
+        data.map((item) => (
+          <ListToDo
+            key={item.id}
+            id={item.id}
+            todo={item.todo}
+            description={item.description}
+            inprogress={item.inprogress}
+          />
+        ))
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }
