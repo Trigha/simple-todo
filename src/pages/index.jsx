@@ -27,6 +27,7 @@ function HomePage() {
   return (
     <div>
       <NavHome />
+
       {data ? <ListToDo data={data} /> : <Loading />}
     </div>
   );
