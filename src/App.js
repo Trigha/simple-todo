@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/index'
 import AddNew from './pages/addNew';
-import EditTodo from './pages/editTodo';
+import EditTodo from './pages/editToDo';
 
 function App() {
   return (
